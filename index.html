@@ -3,22 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>"I Will Refresh You" </title>
+    <title>"I Will Refresh You" - Pioneer Meeting Notes</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
         body {
-            
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: linear-gradient(135deg, #2d8f4e 0%, #1a6b3a 100%);
             padding: 20px;
             min-height: 100vh;
         }
-
+        
         .container {
             max-width: 900px;
             margin: 0 auto;
@@ -27,55 +22,95 @@
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
             overflow: hidden;
         }
-
+        
         .header {
-            background: linear-gradient(135deg, #4a5568 0%, #2d3748 100%);
+            background: linear-gradient(135deg, #2d8f4e 0%, #1a6b3a 100%);
             color: white;
             padding: 40px 30px;
             text-align: center;
         }
-
+        
         .header h1 {
             font-size: 2em;
             margin-bottom: 10px;
             line-height: 1.3;
         }
-
+        
         .header .scripture {
             font-size: 1.1em;
             opacity: 0.9;
             margin-top: 15px;
             font-style: italic;
         }
-
+        
+        .header .sub {
+            font-size: 0.95em;
+            opacity: 0.8;
+            margin-top: 8px;
+        }
+        
         .content {
             padding: 40px 30px;
         }
-
-        .session {
-            margin-bottom: 50px;
+        
+        .assembly-info {
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 40px;
         }
-
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        .info-field {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .info-field label {
+            font-weight: 600;
+            color: #1a6b3a;
+            margin-bottom: 8px;
+            font-size: 1.05em;
+        }
+        
+        .info-field input {
+            padding: 12px 15px;
+            border: 2px solid #a7d8b8;
+            border-radius: 8px;
+            font-size: 1em;
+            font-family: inherit;
+            transition: border-color 0.3s;
+        }
+        
+        .info-field input:focus {
+            outline: none;
+            border-color: #2d8f4e;
+            box-shadow: 0 0 0 3px rgba(45,143,78,0.1);
+        }
+        
         .session-title {
-            background: linear-gradient(135deg, ##2d8f4e 0%, #1a6b3a 100%);
+            background: linear-gradient(135deg, #2d8f4e 0%, #1a6b3a 100%);
             color: white;
             padding: 15px 25px;
             border-radius: 10px;
             font-size: 1.5em;
             margin-bottom: 25px;
+            margin-top: 40px;
             display: flex;
             align-items: center;
         }
-
+        
         .session-title::before {
             content: "☀️";
             margin-right: 15px;
             font-size: 1.2em;
         }
-
-    
-        }
-
+        
         .program-table {
             width: 100%;
             border-collapse: collapse;
@@ -85,310 +120,37 @@
             overflow: hidden;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
         }
-
+        
         .program-table tr {
             border-bottom: 1px solid #e2e8f0;
             transition: background 0.2s;
         }
-
+        
         .program-table tr:hover {
             background: #f7fafc;
         }
-
+        
         .program-table tr:last-child {
             border-bottom: none;
         }
-
+        
         .program-table td {
             padding: 18px 20px;
+            vertical-align: top;
         }
-
+        
         .program-table td:first-child {
             font-weight: 600;
             color: #2d8f4e;
             width: 100px;
             font-size: 1.05em;
         }
-
-        .program-table td:last-child {
-            color: #2d3748;
-            font-size: 1.05em;
-        }
-
+        
         .highlight {
             background: linear-gradient(135deg, #fef5e7 0%, #fdebd0 100%);
             font-weight: 600;
         }
-
-        .songs-section {
-            background: linear-gradient(135deg, #e8f4f8 0%, #dbe9f0 100%);
-            padding: 20px 25px;
-            border-radius: 10px;
-            margin-top: 20px;
-        }
-
-        .songs-section h3 {
-            color: #2c5282;
-            margin-bottom: 15px;
-            font-size: 1.2em;
-        }
-
-        .songs-section ul {
-            list-style: none;
-        }
-
-        .songs-section li {
-            padding: 10px 0;
-            color: #2d3748;
-            font-size: 1.05em;
-            padding-left: 25px;
-            position: relative;
-        }
-
-        .songs-section li::before {
-            content: "♪";
-            position: absolute;
-            left: 0;
-            color: #2d8f4e;
-            font-size: 1.3em;
-        }
-
-        .symposium {
-            background: linear-gradient(135deg, #fef3e7 0%, #fce3c6 100%);
-            padding: 20px 25px;
-            border-radius: 10px;
-            margin: 20px 0;
-        }
-
-        .symposium h3 {
-            color: #8b5a00;
-            margin-bottom: 15px;
-            font-size: 1.2em;
-        }
-
-        .symposium ul {
-            list-style: none;
-            padding-left: 15px;
-        }
-
-        .symposium li {
-            padding: 8px 0;
-            color: #2d3748;
-            font-size: 1.05em;
-            padding-left: 20px;
-            position: relative;
-        }
-
-        .symposium li::before {
-            content: "•";
-            position: absolute;
-            left: 0;
-            color: #d97706;
-            font-size: 1.5em;
-            line-height: 1;
-        }
-
-        .footer {
-            background: #f7fafc;
-            padding: 25px 30px;
-            text-align: center;
-            color: #4a5568;
-            font-size: 0.95em;
-        }
-
-        .footer p {
-            margin: 5px 0;
-        }
-
-        .assembly-info {
-            background: linear-gradient(135deg, #f0f4ff 0%, #e8eeff 100%);
-            padding: 25px;
-            border-radius: 12px;
-            margin-bottom: 40px;
-        }
-
-        .info-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-        }
-
-        .info-field {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .info-field label {
-            font-weight: 600;
-            color: #4a5568;
-            margin-bottom: 8px;
-            font-size: 1.05em;
-        }
-
-        .info-field input {
-            padding: 12px 15px;
-            border: 2px solid #cbd5e0;
-            border-radius: 8px;
-            font-size: 1em;
-            font-family: inherit;
-            transition: border-color 0.3s;
-        }
-
-        .info-field input:focus {
-            outline: none;
-            border-color: #2d8f4e;
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
-        }
-
-        .illustration {
-            background: linear-gradient(135deg, #fff8e1 0%, #ffecb3 100%);
-            padding: 25px;
-            border-radius: 12px;
-            margin-bottom: 40px;
-            border-left: 5px solid #f59e0b;
-        }
-
-        .questions-section {
-            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
-            padding: 30px;
-            border-radius: 12px;
-            margin-top: 40px;
-            border-left: 5px solid #10b981;
-        }
-
-        .questions-section h3 {
-            color: #065f46;
-            font-size: 1.8em;
-            margin-bottom: 30px;
-            text-align: center;
-        }
-
-        .question-item {
-            background: white;
-            padding: 25px;
-            border-radius: 10px;
-            margin-bottom: 25px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-        }
-
-        .question-text {
-            font-size: 1.15em;
-            color: #1f2937;
-            margin-bottom: 15px;
-            font-weight: 500;
-            line-height: 1.6;
-        }
-
-        .question-number {
-            display: inline-block;
-            background: linear-gradient(135deg, #2d8f4e 0%, #1a6b3a 100%);
-            color: white;
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            text-align: center;
-            line-height: 32px;
-            font-weight: 600;
-            margin-right: 12px;
-        }
-
-        .scripture-links {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-bottom: 15px;
-        }
-
-        .scripture-links a {
-            background: #eff6ff;
-            color: #1e40af;
-            padding: 8px 16px;
-            border-radius: 6px;
-            text-decoration: none;
-            font-size: 0.95em;
-            font-weight: 500;
-            border: 1px solid #bfdbfe;
-            transition: all 0.2s;
-        }
-
-        .scripture-links a:hover {
-            background: #dbeafe;
-            border-color: #93c5fd;
-            transform: translateY(-2px);
-        }
-
-        .notes-area {
-            margin-top: 15px;
-        }
-
-        .notes-area label {
-            display: block;
-            font-weight: 600;
-            color: #374151;
-            margin-bottom: 8px;
-        }
-
-        .notes-area textarea {
-            width: 100%;
-            min-height: 120px;
-            padding: 15px;
-            border: 2px solid #d1d5db;
-            border-radius: 8px;
-            font-size: 1em;
-            font-family: inherit;
-            resize: vertical;
-            line-height: 1.6;
-            transition: border-color 0.3s;
-        }
-
-        .notes-area textarea:focus {
-            outline: none;
-            border-color: #10b981;
-            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
-        }
-
-        .key-takeaways {
-            background: linear-gradient(135deg, #fef3e7 0%, #fde3c6 100%);
-            padding: 30px;
-            border-radius: 12px;
-            margin-top: 40px;
-            border-left: 5px solid #f59e0b;
-        }
-
-        .key-takeaways h3 {
-            color: #92400e;
-            font-size: 1.8em;
-            margin-bottom: 30px;
-            text-align: center;
-        }
-
-        .takeaway-item {
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            margin-bottom: 20px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-        }
-
-        .takeaway-item textarea {
-            width: 100%;
-            min-height: 100px;
-            padding: 15px;
-            border: 2px solid #d1d5db;
-            border-radius: 8px;
-            font-size: 1em;
-            font-family: inherit;
-            resize: vertical;
-            line-height: 1.6;
-            transition: border-color 0.3s;
-        }
-
-        .takeaway-item textarea:focus {
-            outline: none;
-            border-color: #f59e0b;
-            box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.1);
-        }
-
+        
         .talk-notes {
             width: 100%;
             min-height: 80px;
@@ -402,236 +164,224 @@
             transition: border-color 0.3s;
             background: #f9fafb;
         }
-
+        
         .talk-notes:focus {
             outline: none;
             border-color: #2d8f4e;
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+            box-shadow: 0 0 0 3px rgba(45,143,78,0.1);
             background: white;
         }
-
-        .program-table td {
-            padding: 18px 20px;
-            vertical-align: top;
+        
+        .talk-title-input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 2px solid #d1d5db;
+            border-radius: 6px;
+            font-size: 1em;
         }
-
-        @media print {
-            body {
-                background: white;
-                padding: 0;
-            }
-
-            .container {
-                box-shadow: none;
-                border-radius: 0;
-            }
+        
+        .talk-title-input:focus {
+            outline: none;
+            border-color: #2d8f4e;
+            box-shadow: 0 0 0 3px rgba(45,143,78,0.1);
         }
-
+        
+        .key-takeaways {
+            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+            padding: 30px;
+            border-radius: 12px;
+            margin-top: 40px;
+            border-left: 5px solid #3b82f6;
+        }
+        
+        .key-takeaways h3 {
+            color: #1e40af;
+            font-size: 1.6em;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+        
+        .takeaway-item {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+        
+        .takeaway-item label {
+            font-weight: 600;
+            color: #1e40af;
+            display: block;
+            margin-bottom: 10px;
+            font-size: 1.05em;
+        }
+        
+        .takeaway-item textarea {
+            width: 100%;
+            min-height: 100px;
+            padding: 15px;
+            border: 2px solid #d1d5db;
+            border-radius: 8px;
+            font-size: 1em;
+            font-family: inherit;
+            resize: vertical;
+            line-height: 1.6;
+            transition: border-color 0.3s;
+        }
+        
+        .takeaway-item textarea:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59,130,246,0.1);
+        }
+        
+        .footer {
+            background: #f7fafc;
+            padding: 25px 30px;
+            text-align: center;
+            color: #4a5568;
+            font-size: 0.95em;
+        }
+        
+        .footer p {
+            margin: 5px 0;
+        }
+        
         @media (max-width: 768px) {
-            body {
-                padding: 10px;
-            }
-
-            .header {
-                padding: 25px 15px;
-            }
-
-            .header h1 {
-                font-size: 1.3em;
-            }
-
-            .header .scripture {
-                font-size: 0.95em;
-            }
-
-            .session-title {
-                font-size: 1.1em;
-                padding: 12px 15px;
-            }
-
-            .content {
-                padding: 20px 15px;
-            }
-
-            .info-grid {
-                grid-template-columns: 1fr;
-                gap: 15px;
-            }
-
-            .program-table td {
-                padding: 10px 12px;
-                font-size: 0.9em;
-            }
-
-            .program-table td:first-child {
-                width: 60px;
-                font-size: 0.85em;
-                                white-space: nowrap;
-            }
-
-            .questions-section,
-            .key-takeaways,
-            .illustration,
-            .symposium {
-                padding: 15px;
-            }
-
-            .questions-section h3,
-            .key-takeaways h3 {
-                font-size: 1.4em;
-            }
-
-            .question-item,
-            .takeaway-item {
-                padding: 15px;
-            }
-
-            .scripture-links a {
-                padding: 6px 10px;
-                font-size: 0.85em;
-            }
-
-            .songs-section {
-                padding: 15px;
-            }
-
-            .talk-notes {
-                min-height: 60px;
-                font-size: 0.9em;
-            }
-
-            .footer {
-                padding: 20px 15px;
-                font-size: 0.85em;
-            }
-
-            #status-bar {
-                font-size: 0.8em;
-                flex-wrap: wrap;
-                gap: 8px;
-                justify-content: center;
-            }
+            body { padding: 10px; }
+            .header { padding: 25px 15px; }
+            .header h1 { font-size: 1.3em; }
+            .content { padding: 20px 15px; }
+            .info-grid { grid-template-columns: 1fr; gap: 15px; }
+            .session-title { font-size: 1.1em; padding: 12px 15px; }
+            .program-table td { padding: 10px 12px; font-size: 0.9em; }
+            .program-table td:first-child { width: 60px; font-size: 0.85em; white-space: nowrap; }
+            .takeaway-item { padding: 15px; }
         }
     </style>
 </head>
 <body>
-   
-
+    <div class="container">
+        <div class="header">
+            <h1>"I Will Refresh You"</h1>
+            <div class="scripture">MATTHEW 11:28</div>
+            <div class="sub">Circuit Pioneer Meeting — Rosenberg Assembly Hall</div>
+            <div class="sub">February 6, 2026 • 9:30 AM – 12:30 PM</div>
+        </div>
+        
         <div class="content">
-            <!-- Assembly Information -->
             <div class="assembly-info">
-                <h3 style="color: #4a5568; margin-bottom: 20px; font-size: 1.3em;">Assembly Information</h3>
-                             <div class="info-grid">
+                <h3 style="color: #1a6b3a; margin-bottom: 20px; font-size: 1.3em;">Meeting Information</h3>
+                <div class="info-grid">
                     <div class="info-field">
                         <label>Name:</label>
-                        <input type="text" placeholder="Enter your name">
+                        <input type="text" id="name" placeholder="Enter your name">
                     </div>
                     <div class="info-field">
                         <label>Date:</label>
-                        <input type="text" placeholder="Enter assembly date">
+                        <input type="text" id="date" placeholder="February 6, 2026">
                     </div>
-   
                     <div class="info-field">
                         <label>Congregation:</label>
-                        <input type="text" placeholder="Enter congregation name">
+                        <input type="text" id="congregation" placeholder="Enter congregation name">
                     </div>
                     <div class="info-field">
                         <label>Location:</label>
-                        <input type="text" placeholder="Enter assembly hall location">
+                        <input type="text" id="location" placeholder="Rosenberg Assembly Hall">
                     </div>
-                    
                 </div>
             </div>
 
-          
+            <div class="session-title">Session</div>
+            
+            <table class="program-table">
+                <tr>
+                    <td>9:40</td>
+                    <td>
+                        <div style="font-weight: 500;">Music</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>9:50</td>
+                    <td>
+                        <div style="font-weight: 500;">Song No. 1 and Prayer</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>10:00</td>
+                    <td>
+                        <input type="text" id="talk1_title" class="talk-title-input" placeholder="Enter talk title">
+                        <textarea id="talk1" class="talk-notes" placeholder="Add notes for this talk..."></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td>10:15</td>
+                    <td>
+                        <input type="text" id="talk2_title" class="talk-title-input" placeholder="Enter talk title">
+                        <textarea id="talk2" class="talk-notes" placeholder="Add notes for this talk..."></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td>10:30</td>
+                    <td>
+                        <input type="text" id="talk3_title" class="talk-title-input" placeholder="Enter talk title">
+                        <textarea id="talk3" class="talk-notes" placeholder="Add notes for this talk..."></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td>10:55</td>
+                    <td>
+                        <input type="text" id="song2" class="talk-title-input" placeholder="Song No. and Announcements">
+                    </td>
+                </tr>
+                <tr>
+                    <td>11:05</td>
+                    <td>
+                        <input type="text" id="talk4_title" class="talk-title-input" placeholder="Enter talk title">
+                        <textarea id="talk4" class="talk-notes" placeholder="Add notes for this talk..."></textarea>
+                    </td>
+                </tr>
+                <tr class="highlight">
+                    <td>11:35</td>
+                    <td>
+                        <div style="font-weight: 500; margin-bottom: 10px;"><strong>Baptism Talk</strong></div>
+                        <textarea id="baptism" class="talk-notes" placeholder="Add notes for the baptism talk..."></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td>12:05</td>
+                    <td>
+                        <div style="font-weight: 500;">Song No. 79</div>
+                    </td>
+                </tr>
+            </table>
 
-            <!-- Morning Session -->
-            <div class="session morning">
-                <div class="session-title">Session</div>
-                
-                <table class="program-table">
-                    <tr>
-                        <td>9:40</td>
-                        <td>
-                            <div style="font-weight: 500;">Music</div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>9:50</td>
-                        <td>
-                            <div style="font-weight: 500; margin-bottom: 10px;">Song No. 1 and Prayer</div>
-                        </td>
-                    </tr>
-                    <tr>
-                                                                <td>10:00</td>
-                        <td>
-                            <input type="text" placeholder="Enter talk title" style="width: 100%; padding: 8px; margin-bottom: 10px; border: 2px solid #d1d5db; border-radius: 6px; font-size: 1em;">
-                            <textarea class="talk-notes" placeholder="Add notes for this talk..."></textarea>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>10:15</td>
-                        <td>
-                            <input type="text" placeholder="Enter talk title" style="width: 100%; padding: 8px; margin-bottom: 10px; border: 2px solid #d1d5db; border-radius: 6px; font-size: 1em;">
-                            <textarea class="talk-notes" placeholder="Add notes for this talk..."></textarea>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>10:30</td>
-                        <td>
-                            <input type="text" placeholder="Enter talk title" style="width: 100%; padding: 8px; margin-bottom: 10px; border: 2px solid #d1d5db; border-radius: 6px; font-size: 1em;">
-                            <textarea class="talk-notes" placeholder="Add notes for this talk..."></textarea>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>10:55</td>
-                        <td>
-                     <input type="text" placeholder="Enter talk title" style="width: 100%; padding: 8px; margin-bottom: 10px; border: 2px solid #d1d5db; border-radius: 6px; font-size: 1em;">
-
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>11:05</td>
-                        <td>
-                            <input type="text" placeholder="Enter talk title" style="width: 100%; padding: 8px; margin-bottom: 10px; border: 2px solid #d1d5db; border-radius: 6px; font-size: 1em;">
-                            <textarea class="talk-notes" placeholder="Add notes for this talk..."></textarea>
-                        </td>
-                    </tr>
-                    <tr class="highlight">
-                        <td>11:35</td>
-                        <td>
-                            <div style="font-weight: 500; margin-bottom: 10px;"><strong>Baptism:</strong> </div>
-                            <textarea class="talk-notes" placeholder="Add notes for this talk..."></textarea>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>12:05</td>
-                       
-                        <!-- Key Takeaways Section -->
             <div class="key-takeaways">
                 <h3>Key Takeaways</h3>
                 
                 <div class="takeaway-item">
-                    <label style="font-weight: 600; color: #22543d; margin-bottom: 8px; display: block;">Morning Session Highlights:</label>
-                    <textarea placeholder="Write your key takeaways from the morning session..."></textarea>
+                    <label>Meeting Highlights:</label>
+                    <textarea id="takeaway1" placeholder="Write your key takeaways from the meeting..."></textarea>
                 </div>
 
                 <div class="takeaway-item">
-                    <label style="font-weight: 600; color: #22543d; margin-bottom: 8px; display: block;">Personal Application:</label>
-                    <textarea placeholder="How will you apply what you learned?"></textarea>
+                    <label>Personal Application:</label>
+                    <textarea id="takeaway2" placeholder="How will you apply what you learned?"></textarea>
                 </div>
 
                 <div class="takeaway-item">
-                    <label style="font-weight: 600; color: #22543d; margin-bottom: 8px; display: block;">Follow-Up Actions:</label>
-                    <textarea placeholder="What specific actions will you take based on this program?"></textarea>
+                    <label>Follow-Up Actions:</label>
+                    <textarea id="takeaway3" placeholder="What specific actions will you take?"></textarea>
                 </div>
             </div>
         </div>
 
         <div class="footer">
-            <p><strong>Program Duration:</strong> 9:30 AM - 12:30 PM </p>
+            <p><strong>Program Duration:</strong> 9:30 AM – 12:30 PM</p>
             <p><strong>Source:</strong> Official program from JW.org</p>
-            <p style="margin-top: 15px; font-size: 0.9em;">This Pioneer program emphasizes listening to spiritual guidance and remaining faithful.</p>
+            <p style="margin-top: 15px; font-size: 0.9em;">This pioneer program emphasizes listening to spiritual guidance and remaining faithful.</p>
         </div>
     </div>
     <script src="script.js"></script>
